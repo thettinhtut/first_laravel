@@ -13,13 +13,11 @@
 // Route::get('/','HomeController@index');
 
 Route::resource('receipe','ReceipeController');
-// Route::get('receipe','ReceipeController@index');
-// Route::get('receipe/create','ReceipeController@createReceipeForm');
-// Route::get('receipe/{id}','ReceipeController@show');
-// Route::post('receipe','ReceipeController@create');
-// Route::get('receipe/{id}/edit','ReceipeController@edit');
-// Route::patch('receipe/{id}','ReceipeController@update');
-// Route::delete('receipe/{id}','ReceipeController@delete');
+Route::get('/home','HomeController@index');
+
+
+
+Auth::routes();
 
 
 

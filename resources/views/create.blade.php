@@ -29,8 +29,12 @@
   </div>
 
   <div class="form-group">
-    <label for="Category">Category</label>
-    <input type="text" class="form-control" name="category" id="" value="{{old('category')}}" required>
+   <select class="form-control" name="category">
+    @foreach($category as $value)
+    <option value="{{$value->id}}">{{$value->name}}</option>
+    @endforeach
+     
+   </select>
   </div>
 
   

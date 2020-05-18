@@ -31,8 +31,13 @@
   </div>
 
   <div class="form-group">
-    <label for="Category">Category</label>
-    <input type="text" class="form-control" name="category" id="" value="{{$receipe->category}}" required>
+   <select class="form-control" name="category">
+    @foreach($category as $value)
+    <option value="{{$value->id}}" {{$receipe->categories->id == $value->id ? 
+    "selected" : ""}}>{{$value->name}}</option>
+    @endforeach
+     
+   </select>
   </div>
 
   

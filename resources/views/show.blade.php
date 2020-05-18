@@ -6,7 +6,7 @@
 <div class="container">
 	<h1>{{$receipe->name}}</h1>
 	<li>{{$receipe->ingredients}}</li>
-<li>{{$receipe->category}}</li>
+<li>{{$receipe->categories->name}}</li>
 <hr>
 <a href="/receipe/{{$receipe->id}}/edit"><button class="btn btn-success">Edit</button></a>
 
