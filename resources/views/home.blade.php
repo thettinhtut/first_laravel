@@ -13,8 +13,31 @@
                             {{ session('status') }}
                         </div>
                     @endif
-				<div class="container">
+                    <div class="container">
+
 					<h1>home page</h1>
+
+                    @if ($message = Session::get('editmess'))
+                        <div class="alert alert-info alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button> 
+                        <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+
+                    @if ($message = Session::get('createmess'))
+                        <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button> 
+                        <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+
+                    @if ($message = Session::get('deletemess'))
+                        <div class="alert alert-info alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button> 
+                        <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+
 					<a href="/receipe/create"><button class="btn btn-success">Create</button></a>
 					@foreach($data as $value)
 					<a href="receipe/{{$value->id}}"><li>{{$value->name}}</li></a>
