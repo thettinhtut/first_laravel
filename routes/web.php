@@ -12,13 +12,13 @@ use App\Receipes;
 */
 
 
-Route::get('/',function(){
-	dd(app('test'));
-});
+
 
 Route::resource('receipe','ReceipeController');
 Route::get('/home','HomeController@index');
-
+Route::get('/','PublicController@index');
+Route::get('detail/{id}','PublicController@show');
+Route::resource('category','CategoryController');
 
 
 Auth::routes();

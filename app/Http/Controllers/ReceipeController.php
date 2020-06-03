@@ -7,7 +7,8 @@ use App\Category;
 use App\Test;
 use App\Mail\ReceipeStored;
 use Illuminate\Http\Request;
-
+use App\Notifications\ReceipeCreaedNotification;
+use App\User;
 
 class ReceipeController extends Controller
 {
@@ -25,10 +26,13 @@ class ReceipeController extends Controller
      */
     public function index()
     {
-      
+        // $user = User::find(2);
+        // $user->notify(new ReceipeCreaedNotification());
+        // echo "Sent notification";
+        // exit();
 
-         $data = Receipes::where('author_id',auth()->id())->get();
-        return view('home',compact('data'));
+        $data = Receipes::where('author_id',auth()->id())->paginate(10);
+        return view('receipeviews.home',compact('data'));
     }
 
     /**
@@ -39,7 +43,7 @@ class ReceipeController extends Controller
     public function create()
     {
         $category = Category::all();
-        return view('create',compact('category'));
+        return view('receipeviews.create',compact('category'));
     }
 
     /**
@@ -56,12 +60,13 @@ class ReceipeController extends Controller
         'name' => 'required',
         'ingredients' => 'required',
         'category'=>'required',
+        'description'=>'required',
     ]);
         
-       $receipe =  Receipes::create($validatedData + ['author_id' => auth()->id()]);
+       $receipe =  Receipes::create($validatedData + ['author_id' => auth()->id()] );
 
     
-        
+       // event(new ReceipeCreatedEvent($receipe));
         
         return redirect('receipe');
     }
@@ -74,9 +79,9 @@ class ReceipeController extends Controller
      */
     public function show(Receipes $receipe)
     {
-    
+        
         $this->authorize('view',$receipe);
-        return view('show',compact('receipe'));
+        return view('receipeviews.show',compact('receipe'));
     }
 
     /**
@@ -91,7 +96,7 @@ class ReceipeController extends Controller
 
         $category = Category::all();
 
-        return view('edit',compact('receipe','category'));
+        return view('receipeviews.edit',compact('receipe','category'));
 
 
     }
@@ -110,6 +115,7 @@ class ReceipeController extends Controller
         'name' => 'required',
         'ingredients' => 'required',
         'category'=>'required',
+        'description'=>'required',
     ]);
 
          $receipe->update($validatedData);
@@ -127,8 +133,7 @@ class ReceipeController extends Controller
     {
         $this->authorize('view',$receipe);
         $receipe->delete();
-
-        //deleteFlash();
+        
         return redirect('receipe');
     }
 
