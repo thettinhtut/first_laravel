@@ -16,21 +16,21 @@
     </div>
   @endif
 
-  <form action="/receipe" method="POST">
+  <form action="/receipe" method="POST" enctype="multipart/form-data">
   	{{csrf_field()}}
   	<div class="form-group">
       <label for="name">Receipe Name</label>
-      <input type="text" name="name" class="form-control" value="{{old('name')}}" required>
+      <input type="text" name="name" class="form-control" value="{{old('name')}}" >
     
     </div>
     <div class="form-group">
       <label for="ingredients">Ingredients</label>
-      <input type="text" class="form-control" name="ingredients" id="" value="{{old('ingredients')}}" required>
+      <input type="text" class="form-control" name="ingredients" id="" value="{{old('ingredients')}}" >
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
-      <input type="text" class="form-control" name="description" id="" value="{{old('description')}}" required>
+      <input type="text" class="form-control" name="description" id="" value="{{old('description')}}" >
     </div>
 
     <div class="form-group">
@@ -41,6 +41,13 @@
      
    </select>
     </div>
+
+    <div class="form-group">
+      <label for="rimage">Receipe image</label><br>
+      <input type="file"  name="rimage">
+    </div>
+
+
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

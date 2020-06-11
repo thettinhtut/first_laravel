@@ -7,7 +7,7 @@ use App\Events\ReceipeCreatedEvent;
 class Receipes extends Model
 {
     protected $table = 'receipes';
-    protected $fillable = ['name','ingredients','category','author_id','description'];
+    protected $fillable = ['name','ingredients','category','author_id','description','image'];
 
     // protected $dispatchesEvents = [
 

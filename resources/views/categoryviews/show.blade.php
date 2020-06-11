@@ -12,7 +12,8 @@
     <form method="POST" action="/category/{{$category->id}}">
         {{method_field("DELETE")}}
         {{csrf_field()}}
-        <button type="submit" class="btn btn-primary">Delete</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure want to delete this Category?');">Delete</button>
     </form>
 </div>
 @endsection
+

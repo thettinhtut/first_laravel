@@ -16,7 +16,7 @@
     </div>
   @endif
 
-  <form action="/receipe/{{$receipe->id}}" method="POST">
+  <form action="/receipe/{{$receipe->id}}" method="POST" enctype="multipart/form-data">
     {{method_field("PATCH")}}
   	{{csrf_field()}} 
       
@@ -44,6 +44,13 @@
      
     </select>
     </div>
+
+    <div class="form-group">
+    <label for="rimage">Receipe Image</label>
+    <input type="file"  name="rimage" value="{{'/storage/images/'.$receipe->image}}"><br>
+    <img src="{{'/storage/images/'.$receipe->image}}" width="150" height="150">
+    </div>
+
     <button type="submit" class="btn btn-primary">Edit</button>
   </form>
 </div>

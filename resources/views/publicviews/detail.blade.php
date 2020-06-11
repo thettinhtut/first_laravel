@@ -6,9 +6,11 @@
     <div class="row">
         <div class="col-md-12">
           <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" src="{{'/storage/images/'.$receipes->image}}">
            
             <div class="card-body">
-              <h3>{{$receipes->name}}</h3>
+              <h3 class="card-title">{{$receipes->name}}</h3>
+              
               <p class="card-text">Ingredients-{{$receipes->ingredients}}</p>
               <p>Category-{{$receipes->categories->name}}</p>
               <p>Description-{{$receipes->description}}</p>

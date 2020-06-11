@@ -18,8 +18,15 @@ class CreateReceipesTable extends Migration
             $table->text('name');
             $table->text('ingredients');
             $table->text('category');
+           // $table->unsignedBigInteger('category');
             $table->timestamps();
+            //  $table->foreign('category')
+            // ->references('id')->on('category')
+            // ->onDelete('cascade');
+
+
         });
+
     }
 
     /**

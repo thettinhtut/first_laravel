@@ -10,7 +10,7 @@ class PublicController extends Controller
 {
 	public function index()
 	{
-		$receipes = Receipes::paginate(9);
+		$receipes = Receipes::latest()->paginate(9);
     	return view('publicviews.public_welcome',compact('receipes'));
     	
 

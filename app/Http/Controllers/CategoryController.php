@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+Use App\Receipes;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -99,6 +100,17 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $receipe = Receipes::where('category',$category->id)->get();
+        foreach ($receipe as  $value) {
+           $image_path = "storage/images/".$value->image; 
+
+           if (file_exists($image_path)) 
+           {
+             @unlink($image_path);
+           }
+           $value->delete();
+        }
+        
         $category->delete();
         return redirect('category');
     }

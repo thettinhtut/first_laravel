@@ -20,7 +20,7 @@
                     <strong>{{ $message }}</strong>
                 </div>
             @endif
-
+              
             <a href="/receipe/create"><button class="btn btn-success">Create</button></a>
              @foreach($data as $value)
                 <a href="receipe/{{$value->id}}"><li>{{$value->name}}</li></a>
